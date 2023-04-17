@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-12-2023
+ * @last modified on  : 04-17-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTPeopleTracingController {
@@ -38,7 +38,7 @@ public with sharing class CTPeopleTracingController {
         if(existingRecords != null && existingRecords.size() > 0){
             for(People_Tracing__c trace : existingRecords) {
                 if(! mapOfExistingRecords.containsKey(trace.Person_1__c)){
-                    mapOfExistingRecords.put(trace.Person_1__c, new Set<Id>())
+                    mapOfExistingRecords.put(trace.Person_1__c, new Set<Id>());
                 }
                 mapOfExistingRecords.get(trace.Person_1__c).add(trace.Person_2__c);
 

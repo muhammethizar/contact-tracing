@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-11-2023
+ * @last modified on  : 04-17-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTLocationTracingController {
@@ -33,7 +33,7 @@ public with sharing class CTLocationTracingController {
 
     /**
      * Get all visitor ids for locations
-     * @param locationsIds
+     * @param locationIds
      * @return List<Location_Tracing__c>
      */
     public static List<Location_Tracing__c> getLocationsByLocationIds(Set<Id> locationIds){
@@ -78,7 +78,7 @@ public with sharing class CTLocationTracingController {
                     mapOfExistingRecords.put(locationId, new Set<Id>());
                 }
                 // get map item using locationId key
-                Set<Id> personIds = mapOfExistingRecords.get(locationId);
+                personIds = mapOfExistingRecords.get(locationId); // bu satiri control ett
                 // add the person id to the set
                 personIds.add(personId);
                 // overwrite the existing map value
@@ -95,7 +95,7 @@ public with sharing class CTLocationTracingController {
                 }
             }
         }
+        return duplicates; // bunu da kontrol et
     }
-
-    return duplicates;
+ 
 }

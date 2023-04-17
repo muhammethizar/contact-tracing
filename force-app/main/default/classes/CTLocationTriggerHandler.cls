@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-12-2023
+ * @last modified on  : 04-17-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTLocationTriggerHandler {
@@ -17,7 +17,7 @@ public with sharing class CTLocationTriggerHandler {
     public static void beforeUpdate(List<Location__c> newRecords, Map<Id, Location__c> oldRecordMap){
         for(Location__c location : newRecords) {
             if(location.Status__c != oldRecordMap.get(location.Id).Status__c){
-                location.Status_Update_Date__c = Date.today():
+                location.Status_Update_Date__c = Date.today();
             }
         }
     }

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-12-2023
+ * @last modified on  : 04-17-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 trigger CTLocationTracingTrigger on Location_Tracing__c (before insert) {
@@ -10,4 +10,5 @@ trigger CTLocationTracingTrigger on Location_Tracing__c (before insert) {
         when BEFORE_INSERT {
             CTLocationTracingTriggerHandler.beforeInsert(Trigger.new);
         }
+    }
 }
