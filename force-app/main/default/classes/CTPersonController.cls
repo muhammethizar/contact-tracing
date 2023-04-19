@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-12-2023
+ * @last modified on  : 04-18-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTPersonController {
@@ -151,4 +151,18 @@ public with sharing class CTPersonController {
         }
         return healthCountMap;
     }
+    
+    public static Map<String, Integer> getHealthStatusCount2(){
+        AggregateResult[] healthCountMap = [SELECT Health_Status__c, COUNT(Id) total FROM Person__c GROUP BY Health_Status__c];
+
+        if(healthCountMap != null && healthCountMap.size() > 0){
+            Map<String,Integer> result = new Map<String,Integer>();
+            for(AggregateResult ar : healthCountMap){
+                result.put(String.valueOf(ar.get('Health_Status__c')), Integer.valueOf(ar.get('total')));
+            }
+            return result;
+        }
+        return null;
+    }
+    
 }

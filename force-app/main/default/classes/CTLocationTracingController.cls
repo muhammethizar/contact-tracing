@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-17-2023
+ * @last modified on  : 04-20-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTLocationTracingController {
@@ -15,7 +15,7 @@ public with sharing class CTLocationTracingController {
     public static List<Location_Tracing__c> getVisitors(String locationId){
         return [SELECT Id, Person__c, Location__c, Visit_Date__c, Person__r.Token__c, Person__r.Health_Status__c 
                 FROM Location_Tracing__c 
-                WHERE Id =: locationId
+                WHERE Location__c =: locationId
                 ORDER BY Visit_Date__c DESC];
     }
 

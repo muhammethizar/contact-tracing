@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : ChangeMeIn@UserSettingsUnder.SFDoc
  * @group             : 
- * @last modified on  : 04-12-2023
+ * @last modified on  : 04-18-2023
  * @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
 **/
 public with sharing class CTLocationController {
@@ -86,5 +86,18 @@ public with sharing class CTLocationController {
         } else{
             return 'Red';
         }
+    }
+
+    public static Map<String, Integer> getHealthStatusCount2(){
+        AggregateResult[] healthCountMap = [SELECT Status__c, COUNT(Id) total FROM Location__c GROUP BY Status__c];
+
+        if(healthCountMap != null && healthCountMap.size() > 0){
+            Map<String,Integer> result = new Map<String,Integer>();
+            for(AggregateResult ar : healthCountMap){
+                result.put(String.valueOf(ar.get('Status__c')), Integer.valueOf(ar.get('total')));
+            }
+            return result;
+        }
+        return null;
     }
 }
